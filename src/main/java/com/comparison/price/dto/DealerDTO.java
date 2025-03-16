@@ -11,6 +11,11 @@ public class DealerDTO {
 
     private Map<String, String> products;
 
+    public DealerDTO(String dealer, Map<String, String> products) {
+        this.dealer = dealer;
+        this.products = products;
+    }
+
     // Getters and Setters
     public String getDealer() {
         return dealer;

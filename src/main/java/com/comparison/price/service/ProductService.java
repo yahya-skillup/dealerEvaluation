@@ -2,25 +2,30 @@ package com.comparison.price.service;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.comparison.price.dto.DealerDTO;
 import com.comparison.price.dto.ProductDTO;
 import com.comparison.price.dto.ProductsDTO;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 
 @Service
 public class ProductService {
 
     private static ProductsDTO productsDTO = new ProductsDTO();
 
-    private final ObjectMapper objectMapper = new ObjectMapper();
+    // private final ObjectMapper objectMapper = new ObjectMapper();
 
     public ProductsDTO getAll() {
         if (productsDTO != null && productsDTO.getProducts() != null && !productsDTO.getProducts().isEmpty()) {
             return productsDTO;
         }
-        productsDTO = getDataFromJson();
+        productsDTO = getData();
         return productsDTO;
     }
 
@@ -32,7 +37,7 @@ public class ProductService {
                     .findFirst().orElseThrow(() -> new RuntimeException("Product not found"));
 
         } else {
-            productsDTO = getDataFromJson();
+            productsDTO = getData();
             productDTO = productsDTO.getProducts().stream().filter(product -> product.getProduct().equals(productName)).findFirst().orElseThrow(() -> new RuntimeException("Product not found"));
         }
 
@@ -40,11 +45,25 @@ public class ProductService {
 
     }
 
-    private ProductsDTO getDataFromJson() {
-        try {
-            return objectMapper.readValue(new File("src/main/resources/json/products.json"), ProductsDTO.class);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+    private ProductsDTO getData() {
+        ProductsDTO products = new ProductsDTO();
+        products.setProducts(
+            Arrays.asList(
+                new ProductDTO("Headphones", Arrays.asList("Binglee", "DXC Electronics", "Bobay")),
+                new ProductDTO("Laptop", Arrays.asList("GH Computers", "Tech city", "Ez PC")),
+                new ProductDTO("Mouse", Arrays.asList("DXC Electronics", "Tech City")),
+                new ProductDTO("Printer", Arrays.asList("Binglee", "DXC Electronics", "Bobay", "GH Computers"))
+            ));
+
+        return products;
+
     }
+
+    // private ProductsDTO getDataFromJson() {
+    //     try {
+    //         return objectMapper.readValue(new File("src/main/resources/json/products.json"), ProductsDTO.class);
+    //     } catch (IOException e) {
+    //         throw new RuntimeException(e);
+    //     }
+    // }
 }

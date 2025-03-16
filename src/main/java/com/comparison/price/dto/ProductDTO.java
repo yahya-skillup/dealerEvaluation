@@ -10,6 +10,11 @@ public class ProductDTO {
     @JsonProperty("Dealers")
     private List<String> dealers;
 
+    public ProductDTO(String product, List<String> dealers) {
+        this.product = product;
+        this.dealers = dealers;
+    }
+
     // Getters and Setters
     public String getProduct() {
         return product;
