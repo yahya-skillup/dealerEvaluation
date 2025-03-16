@@ -6,9 +6,7 @@
     }
 </style>
 <script>
-    let baseUrl = "http://localhost:8081/price/"
-
-    axios.get(baseUrl+"products/api/getAll").then(res=>{
+    axios.get("products/api/getAll").then(res=>{
         let selEl = document.createElement("select");
         selEl.setAttribute("id","selProd")
         selEl.setAttribute("onChange","getDealers()")
@@ -32,7 +30,7 @@
         let valToFetch = document.getElementById("selProd").value;
 
         if(valToFetch != "--SELECT--") {
-            axios.get(baseUrl+"products/api/getByProductName/"+valToFetch).then(res=>{
+            axios.get("products/api/getByProductName/"+valToFetch).then(res=>{
                 let selEl = document.createElement("select");
                 selEl.setAttribute("id","selDealer")
                 selEl.setAttribute("onChange","getDealerProductPrice()")
@@ -66,11 +64,11 @@
            pricingEl.childNodes.forEach(node=>pricingEl.removeChild(node));
 
            if (dealervalToFetch != 'All Dealers') {
-               axios.get(baseUrl+"dealer/api/getPriceByProductNameAndDealer/"+prodvalToFetch+"/"+dealervalToFetch).then(res=>{
+               axios.get("dealer/api/getPriceByProductNameAndDealer/"+prodvalToFetch+"/"+dealervalToFetch).then(res=>{
                    document.getElementById("pricing").innerText = res.data;
                })
            } else {
-               axios.get(baseUrl+"dealer/api/getAllProductPrices/"+prodvalToFetch).then(res=>{
+               axios.get("dealer/api/getAllProductPrices/"+prodvalToFetch).then(res=>{
                    let table = document.createElement("table")
 
                    res.data.forEach((price)=>{
