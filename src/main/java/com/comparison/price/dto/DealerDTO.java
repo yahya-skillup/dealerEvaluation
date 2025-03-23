@@ -11,6 +11,10 @@ public class DealerDTO {
 
     private Map<String, String> products;
 
+    public DealerDTO() {
+        
+    }
+
     public DealerDTO(String dealer, Map<String, String> products) {
         this.dealer = dealer;
         this.products = products;

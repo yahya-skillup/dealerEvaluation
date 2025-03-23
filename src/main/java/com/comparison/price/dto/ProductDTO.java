@@ -10,6 +10,10 @@ public class ProductDTO {
     @JsonProperty("Dealers")
     private List<String> dealers;
 
+    public ProductDTO() {
+        
+    }
+
     public ProductDTO(String product, List<String> dealers) {
         this.product = product;
         this.dealers = dealers;
