@@ -58,12 +58,4 @@ public class ProductService {
         return products;
 
     }
-
-    // private ProductsDTO getDataFromJson() {
-    //     try {
-    //         return objectMapper.readValue(new File("src/main/resources/json/products.json"), ProductsDTO.class);
-    //     } catch (IOException e) {
-    //         throw new RuntimeException(e);
-    //     }
-    // }
 }

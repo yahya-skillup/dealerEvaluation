@@ -57,14 +57,6 @@ public class DealerService {
         return dealers;
     }
 
-    // private DealersDTO getDataFromJson() {
-    //     try {
-    //         return objectMapper.readValue(new File("src/main/resources/json/dealers.json"), DealersDTO.class);
-    //     } catch (IOException e) {
-    //         throw new RuntimeException(e);
-    //     }
-    // }
-
     public List<AbstractMap.SimpleEntry<String, String>> getAllProductPrices(String productName) {
         if (dealersDTO == null || CollectionUtils.isEmpty(dealersDTO.getDealers())) {
             // dealersDTO = getDataFromJson();
