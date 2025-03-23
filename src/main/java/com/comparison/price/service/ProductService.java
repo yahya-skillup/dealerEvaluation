@@ -5,6 +5,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.comparison.price.dto.DealerDTO;
 import com.comparison.price.dto.ProductDTO;
 import com.comparison.price.dto.ProductsDTO;
+import com.comparison.price.util.JsonReader;
+
 import org.springframework.stereotype.Service;
 
 import java.io.File;
@@ -47,7 +49,7 @@ public class ProductService {
 
     private ProductsDTO getData() {
         try {
-            String productsJson = JsonReaderUtil.readJsonFromClasspath("json/products.json");
+            String productsJson = JsonReader.readJsonFromClasspath("json/products.json");
             return objectMapper.readValue(productsJson, ProductsDTO.class);
         } catch (Exception e) {
             return null;

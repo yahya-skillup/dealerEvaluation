@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.comparison.price.dto.DealerDTO;
 import com.comparison.price.dto.DealersDTO;
 import com.comparison.price.dto.ProductsDTO;
+import com.comparison.price.util.JsonReader;
 
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
@@ -45,7 +46,7 @@ public class DealerService {
 
     private DealersDTO getData() {
         try {
-            String json = JsonReaderUtil.readJsonFromClasspath("json/dealers.json");
+            String json = JsonReader.readJsonFromClasspath("json/dealers.json");
             return objectMapper.readValue(json, DealersDTO.class);
         } catch (Exception e) {
             return null;
