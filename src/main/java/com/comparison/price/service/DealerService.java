@@ -3,14 +3,11 @@ package com.comparison.price.service;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.comparison.price.dto.DealerDTO;
 import com.comparison.price.dto.DealersDTO;
-import com.comparison.price.dto.ProductsDTO;
 import com.comparison.price.util.JsonReader;
 
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.AbstractMap;
 import java.util.Arrays;
 import java.util.List;
@@ -45,24 +42,17 @@ public class DealerService {
     }
 
     private DealersDTO getData() {
-        try {
-            String json = JsonReader.readJsonFromClasspath("json/dealers.json");
-            return objectMapper.readValue(json, DealersDTO.class);
-        } catch (Exception e) {
-            return null;
-        }
-
-        // var dealers = new DealersDTO();
-        // List<DealerDTO> dealersList = Arrays.asList(
-        //     new DealerDTO("Binglee", Map.of("Headphones", "$30", "Printer", "$75")),
-        //     new DealerDTO("DXC Electronics", Map.of("Mouse", "$20", "Printer", "$85", "Headphones", "$20")),
-        //     new DealerDTO("Bobay", Map.of("Headphones", "$20", "Printer", "$80")),
-        //     new DealerDTO("Tech City", Map.of("Mouse", "$20", "Laptop", "$850")),
-        //     new DealerDTO("Ez PC", Map.of("Laptop", "$1000")),
-        //     new DealerDTO("GH Computers", Map.of("Laptop", "$1500", "Printer", "$95"))
-        // );
-        // dealers.setDealers(dealersList);
-        // return dealers;
+        var dealers = new DealersDTO();
+        List<DealerDTO> dealersList = Arrays.asList(
+            new DealerDTO("Binglee", Map.of("Headphones", "$30", "Printer", "$75")),
+            new DealerDTO("DXC Electronics", Map.of("Mouse", "$20", "Printer", "$85", "Headphones", "$20")),
+            new DealerDTO("Bobay", Map.of("Headphones", "$20", "Printer", "$80")),
+            new DealerDTO("Tech City", Map.of("Mouse", "$20", "Laptop", "$850")),
+            new DealerDTO("Ez PC", Map.of("Laptop", "$1000")),
+            new DealerDTO("GH Computers", Map.of("Laptop", "$1500", "Printer", "$95"))
+        );
+        dealers.setDealers(dealersList);
+        return dealers;
     }
 
     public List<AbstractMap.SimpleEntry<String, String>> getAllProductPrices(String productName) {
