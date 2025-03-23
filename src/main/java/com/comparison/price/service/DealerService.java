@@ -16,7 +16,7 @@ import java.util.Map;
 @Service
 public class DealerService {
 
-    // private final ObjectMapper objectMapper = new ObjectMapper();
+    private final ObjectMapper objectMapper = new ObjectMapper();
 
     private static DealersDTO dealersDTO = new DealersDTO();
 
@@ -24,7 +24,6 @@ public class DealerService {
         if (dealersDTO != null && dealersDTO.getDealers() != null && !dealersDTO.getDealers().isEmpty()) {
             return dealersDTO;
         }
-        // dealersDTO = getDataFromJson();
         dealersDTO = getData();
         return dealersDTO;
     }
@@ -32,7 +31,6 @@ public class DealerService {
 
     public String getPriceByProductNameAndDealer(String productName, String dealer) {
         if (dealersDTO == null || CollectionUtils.isEmpty(dealersDTO.getDealers())) {
-            // dealersDTO = getDataFromJson();
             dealersDTO = getData();
         }
 
@@ -59,7 +57,6 @@ public class DealerService {
 
     public List<AbstractMap.SimpleEntry<String, String>> getAllProductPrices(String productName) {
         if (dealersDTO == null || CollectionUtils.isEmpty(dealersDTO.getDealers())) {
-            // dealersDTO = getDataFromJson();
             dealersDTO = getData();
         }
 

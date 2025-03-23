@@ -19,7 +19,7 @@ public class ProductService {
 
     private static ProductsDTO productsDTO = new ProductsDTO();
 
-    // private final ObjectMapper objectMapper = new ObjectMapper();
+    private final ObjectMapper objectMapper = new ObjectMapper();
 
     public ProductsDTO getAll() {
         if (productsDTO != null && productsDTO.getProducts() != null && !productsDTO.getProducts().isEmpty()) {
